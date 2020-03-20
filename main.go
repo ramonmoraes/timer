@@ -1,31 +1,25 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
+	"strings"
 	"time"
 
-	"github.com/faiface/beep/mp3"
-	"github.com/faiface/beep/speaker"
+	"github.com/ramonmoraes/timer/cmd"
 )
 
 func main() {
-	playBeep(2)
-}
-
-func playBeep(seconds time.Duration) {
-	f, err := os.Open("./audio/sample.mp3")
-	if err != nil {
-		log.Fatal(err)
+	args := os.Args[1:]
+	if len(args) == 0 || len(args) > 2 {
+		fmt.Println(`Timer should receive a time arguments, may it be 2s or 2 s,
+		e.g:
+		3s or 3 s-> 3 seconds
+		2m or 2 m-> 2 minutes `)
+		return
 	}
 
-	streamer, format, err := mp3.Decode(f)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer streamer.Close()
-	speaker.Init(format.SampleRate, format.SampleRate.N(time.Second/10))
-	speaker.Play(streamer)
-	time.Sleep(time.Second * seconds)
+	waitTime := cmd.ParseTime(strings.Join(args, ""))
+	time.Sleep(waitTime)
+	cmd.PlayBeep(2 * time.Second)
 }
