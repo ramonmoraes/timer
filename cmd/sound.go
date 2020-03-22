@@ -10,7 +10,7 @@ import (
 )
 
 func PlayBeep(soundDuration time.Duration) {
-	f, err := os.Open("./audio/sample.mp3")
+	f, err := os.Open("./audio/audio.mp3")
 	if err != nil {
 		log.Fatal(err)
 	}
