@@ -14,3 +14,5 @@ Just run timer and the expected time
 ```
 $ timer 4s
 ```
+
+Seconds `s` and minutes are suported `m`
