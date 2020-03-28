@@ -1,7 +1,12 @@
 package main
 
 import (
-	"github.com/ramonmoraes/timer/audio"
+	"fmt"
+	"os"
+	"strings"
+	"time"
+
+	"github.com/ramonmoraes/timer/cmd"
 )
 
 //go:generate go run ./audio/generator.go
