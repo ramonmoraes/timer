@@ -1,21 +1,22 @@
 package cmd
 
 import (
+	"io"
 	"log"
-	"os"
 	"time"
 
 	"github.com/faiface/beep/mp3"
 	"github.com/faiface/beep/speaker"
+	"github.com/ramonmoraes/timer/audio"
 )
 
 func PlayBeep(soundDuration time.Duration) {
-	f, err := os.Open("./audio/sample.mp3")
-	if err != nil {
-		log.Fatal(err)
-	}
+	f := audio.LoadSerialized()
+	playBeep(soundDuration, f)
+}
 
-	streamer, format, err := mp3.Decode(f)
+func playBeep(soundDuration time.Duration, rc io.ReadCloser) {
+	streamer, format, err := mp3.Decode(rc)
 	if err != nil {
 		log.Fatal(err)
 	}
