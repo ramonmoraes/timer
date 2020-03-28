@@ -1,13 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"strings"
-	"time"
-
-	"github.com/ramonmoraes/timer/cmd"
+	"github.com/ramonmoraes/timer/audio"
 )
+
+//go:generate go run ./audio/generator.go
 
 func main() {
 	args := os.Args[1:]
