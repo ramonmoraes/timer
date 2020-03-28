@@ -12,13 +12,13 @@ import (
 var template string = `package audio
 
 	
-var AudioBytes := %#v
+var AudioBytes = %#v
 `
 
 func main() {
 	bytes := getFileBytes()
 	generated := fmt.Sprintf(template, bytes)
-	err := ioutil.WriteFile("audio.go", []byte(generated), 0644)
+	err := ioutil.WriteFile("audio/audio.go", []byte(generated), 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
