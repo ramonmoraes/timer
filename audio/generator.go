@@ -9,15 +9,16 @@ import (
 	"os"
 )
 
-func main() {
-	bytes := getFileBytes()
-	template := fmt.Sprintf(`package audio
+var template string = `package audio
 
 	
-var AudioBytes := []bytes{%v}
-`, bytes)
+var AudioBytes := %#v
+`
 
-	err := ioutil.WriteFile("audio.go", []byte(template), 0644)
+func main() {
+	bytes := getFileBytes()
+	generated := fmt.Sprintf(template, bytes)
+	err := ioutil.WriteFile("audio.go", []byte(generated), 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
