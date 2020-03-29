@@ -3,8 +3,14 @@
 ## Installing
 
 ```
-sudo apt-get install libasound2-dev
-go get -u https://github.com/ramonmoraes/timer
+go get -u github.com/ramonmoraes/timer
+```
+
+### Dependencies:
+
+Linux:
+```
+sudo apt install libasound2-dev libsdl2-dev
 ```
 
 ## Using
