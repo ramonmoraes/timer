@@ -35,7 +35,7 @@ func handleInterruptions(waitTime time.Duration) bool {
 	started := time.Now()
 
 	done := make(chan bool, 1)
-	// Wait default time expected time
+	// Wait default expected time
 	go func() {
 		time.Sleep(waitTime)
 		done <- true
