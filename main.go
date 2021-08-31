@@ -11,8 +11,6 @@ import (
 	"github.com/ramonmoraes/timer/cmd"
 )
 
-//go:generate go run ./audio/generator.go
-
 func main() {
 	args := os.Args[1:]
 	if len(args) == 0 || len(args) > 2 {
